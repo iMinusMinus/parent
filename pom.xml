@@ -1,0 +1,131 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ml.iamwhatiam</groupId>
+  <artifactId>parent</artifactId>
+  <version>0.0.1</version>
+  <packaging>pom</packaging>
+  
+  
+  <build>
+    <defaultGoal>install</defaultGoal>
+    <directory>${basedir}/target</directory>
+    <finalName>${artifactId}-${version}</finalName>
+    <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+    <scriptSourceDirectory>${basedir}/src/main/scripts</scriptSourceDirectory>
+    <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+    <outputDirectory>${basedir}/target/classes</outputDirectory>
+    <testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
+  </build>
+  <reporting>
+    <outputDirectory>${basedir}/target/site</outputDirectory>
+  <plugins>
+      <plugin>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.0.1</version>
+        <reportSets>
+          <reportSet>
+            <id>link<id>
+            <reports>
+              <report>javadoc</report>
+            </reports>
+            <inherited>true</inherited>
+            <configuration>
+              <links>
+                <link>http://api.iamwhatiam/docs</link>
+              </links>
+            </configuration>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>  
+  </reporting>
+  
+  
+  <name>I AM WHAT I AM</name>
+  <description>MAKE A DIFFERENT.</description>
+  <url>http://iamwhatiam.ml</url>
+  <inceptionYear>2016</inceptionYear>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://mitlicense.org/</url>
+      <distribution>repo</distribution>
+      <comments>A OSS license</comments>
+    </license>
+  </licenses>
+  <organization>
+    <name>I AM WHAT I AM</name>
+    <url>http://iamwhatiam.ml</url>
+  </organization>
+  <developers>
+    <developer>
+      <id>leung</id>
+      <nameMean Leung</name>
+      <email>mean.leung@icloud.com<email>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>Asia/Shanghai</timezone>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>Mean Leung</name>
+      <email>mean.leung@outlook.com</email>
+      <roles>
+        <role>tester</role>
+      <roles> 
+    </contributor>
+  </contributors>
+  
+  
+  <issueManagement>
+    <system>Bugzilla</system>
+    <url>http://track.iamwhatiam.ml</url>
+  </issueManagement>
+  <ciManagement>
+    <system>Jenkins</system>
+    <url>http://ci.iamwhatiam.ml</url>
+  </ciManagement>
+  <mailingLists>
+    <mailingList>
+      <name>Users</name>
+      <subscribe>subscribe@iamwhatiam.ml</subscribe>
+      <unsubscribe>unsubscribe@iamwhatiam.ml</unsubscribe>
+      <post>user@iamwhatiam.ml</post>
+      <archive>http://archive.iamwhatiam.ml</archive>
+    </mailingList>
+  </mailingLists>
+  <scm>
+    <connection>scm:git:https://github.com/iMinusMinus/parent</connection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <profiles>
+    <profile>
+      <id>jdk6</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <jdk>1.6</jdk>
+      </activation>
+      <dependencyManagement>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version></version>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+          <version></version>
+        </dependency>
+      </dependencyManagement>
+    </profile>
+  </profiles>
+  
+  
+</project>  
