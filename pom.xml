@@ -236,6 +236,11 @@
         <version>3.2.10.Final</version>
       </dependency>
       <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.apache.zookeeper</groupId>
         <artifactId>zookeeper</artifactId>
         <version>3.4.7</version>
@@ -408,11 +413,6 @@
         <scope>optional</scope>
       </dependency>
       <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty</artifactId>
-        <version>${netty.version}</version>
-      </dependency>
-      <dependency>
         <groupId>com.fastxml.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
         <version>${jackson.version}</version>
@@ -481,6 +481,11 @@
         <groupId>org.ow2.asm</groupId>
         <artifactId>asm</artifactId>
         <version>${asm.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>${druid.version}</version>
       </dependency>
       <dependency>
         <groupId>org.postgresql</groupId>
@@ -743,6 +748,7 @@
         <aspectj.version></aspectj.version>
         <cglib.version></cglib.version>
         <asm.version></asm.version>
+        <druid.version></druid.version>
         <postgresql.version></postgresql.version>
         <mysql.version></mysql.version>
         <oracle.version></oracle.version>
@@ -789,6 +795,7 @@
         <aspectj.version></aspectj.version>
         <cglib.version></cglib.version>
         <asm.version></asm.version>
+        <druid.version></druid.version>
         <postgresql.version></postgresql.version>
         <mysql.version></mysql.version>
         <oracle.version></oracle.version>
