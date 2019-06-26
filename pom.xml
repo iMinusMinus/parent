@@ -11,6 +11,7 @@
   <version>0.0.1</version>
   <packaging>pom</packaging>
   
+  
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -91,6 +92,12 @@
       </dependency>
       <dependency>
         <groupId>org.springframework</groupId>
+        <artifactId>spring-oxm</artifactId>
+        <version>${spring.version}</version>
+        <scope>optional</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
         <artifactId>spring-web</artifactId>
         <version>${spring.version}</version>
       </dependency>
@@ -134,6 +141,7 @@
         <groupId>org.apache.ibatis</groupId>
         <artifactId>ibatis-sqlmap</artifactId>
         <version>2.3.4.726</version>
+        <scope>optional</scope>
       </dependency>
       <dependency>
         <groupId>org.mybatis</groupId>
@@ -488,6 +496,11 @@
         <version>${druid.version}</version>
       </dependency>
       <dependency>
+        <groupId>com.zaxxer</groupId>
+        <artifactId>HikariCP</artifactId>
+        <version>${HikariCP.version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
         <version>${postgresql.version}</version>
@@ -506,6 +519,12 @@
         <groupId>org.ehcache</groupId>
         <artifactId>jcache</artifactId>
         <version>1.0.1</version>
+        <scope>optional</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.github.ben-manes.caffeine</groupId>
+        <artifactId>caffeine</artifactId>
+        <version>${caffeine.version}</version>
         <scope>optional</scope>
       </dependency>
       <dependency>
@@ -577,7 +596,13 @@
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit</artifactId>
-        <version>[4.3,)</version>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>${mockito.version}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
@@ -607,7 +632,7 @@
     </dependencies>
   </dependencyManagement>
   <properties>
-    <compiler.compliance.level>1.6</compiler.compliance.level>
+    <compiler.compliance.level>1.8</compiler.compliance.level>
   </properties>  
   
   
@@ -705,61 +730,14 @@
       <archive>http://archive.iamwhatiam.ml</archive>
     </mailingList>
   </mailingLists>
-  <scm>
+  <scm child.project.url.inherit.append.path="false">
     <connection>scm:git:https://github.com/iMinusMinus/parent</connection>
     <tag>HEAD</tag>
   </scm>
 
   <profiles>
     <profile>
-      <id>jdk6</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-        <jdk>1.6</jdk>
-        <property>
-          <name>compiler.compliance.level</name>
-          <value>1.6</value>
-        </property> 
-      </activation>
-      <properties>
-        <slf4j.version></slf4j.version>
-        <logback.version></logback.version>
-        <spring.version>[2.5.4,)</spring.version>
-        <struts.version>[2.3.24,)</struts.version>
-        <mybatis.version></mybatis.version>
-        <mybatis-spring.version></mybatis-spring.version>
-        <hibernate.version></hibernate.version>
-        <cxf.version></cxf.version>
-        <hibernate.validator.version></hibernate.validator.version>
-        <javassist.version></javassist.version>
-        <spring-security.version></spring-security.version>
-        <cas-client.version></cas-client.version>
-        <shiro.version></shiro.version>
-        <joda.version></joda.version>
-        <commons-lang3.version></commons-lang3.version>
-        <commons-compress.version></commons-compress.version>
-        <freemarker.version></freemarker.version>
-        <velocity.version></velocity.version>
-        <netty.version></netty.version>
-        <jackson.version></jackson.version>
-        <protobuf.version></protobuf.version>
-        <poi.version></poi.version>
-        <quartz.version></quartz.version>
-        <aspectj.version></aspectj.version>
-        <cglib.version></cglib.version>
-        <asm.version></asm.version>
-        <druid.version></druid.version>
-        <postgresql.version></postgresql.version>
-        <mysql.version></mysql.version>
-        <oracle.version></oracle.version>
-        <ejb.version></ejb.version>
-        <easymock.version></easymock.version>
-        <dbunit.version></dbunit.version>
-        <testng.version></testng.version>
-      </properties>  
-    </profile>
-    <profile>
-      <id>jdk8</id>
+      <id>legacy</id>
       <activation>
         <activeByDefault>false</activeByDefault>
         <jdk>1.8</jdk>
@@ -796,11 +774,66 @@
         <cglib.version></cglib.version>
         <asm.version></asm.version>
         <druid.version></druid.version>
+        <HikariCP.version></HikariCP.version>
         <postgresql.version></postgresql.version>
         <mysql.version></mysql.version>
         <oracle.version></oracle.version>
+        <caffeine.version></caffeine.version>
         <ejb.version></ejb.version>
+        <junit.version>[4.12,)</junit.version>
+        <mockito.version></mockito.version>
         <easymock.version>3.4</easymock.version>
+        <dbunit.version></dbunit.version>
+        <testng.version></testng.version>
+      </properties>  
+    </profile>
+    <profile>
+      <id>latest</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <jdk>11</jdk>
+        <property>
+          <name>compiler.compliance.level</name>
+          <value>11</value>
+        </property>
+      </activation>
+      <properties>
+        <slf4j.version></slf4j.version>
+        <logback.version></logback.version>
+        <spring.version></spring.version>
+        <struts.version></struts.version>
+        <mybatis.version></mybatis.version>
+        <mybatis-spring.version></mybatis-spring.version>
+        <hibernate.version></hibernate.version>
+        <cxf.version></cxf.version>
+        <hibernate.validator.version></hibernate.validator.version>
+        <javassist.version></javassist.version>
+        <spring-security.version></spring-security.version>
+        <cas-client.version></cas-client.version>
+        <shiro.version></shiro.version>
+        <joda.version></joda.version>
+        <commons-lang3.version></commons-lang3.version>
+        <commons-compress.version></commons-compress.version>
+        <freemarker.version></freemarker.version>
+        <velocity.version></velocity.version>
+        <netty.version></netty.version>
+        <jackson.version></jackson.version>
+        <protobuf.version></protobuf.version>
+        <poi.version></poi.version>
+        <quartz.version></quartz.version>
+        <aspectj.version></aspectj.version>
+        <cglib.version></cglib.version>
+        <asm.version></asm.version>
+        <druid.version></druid.version>
+        <HikariCP.version></HikariCP.version>
+        <postgresql.version></postgresql.version>
+        <mysql.version></mysql.version>
+        <oracle.version></oracle.version>
+        <caffeine.version></caffeine.version>
+        <ejb.version></ejb.version>
+        <junit.version></junit.version>
+        <mockito.version></mockito.version>
+        <easymock.version></easymock.version>
         <dbunit.version></dbunit.version>
         <testng.version></testng.version>
       </properties>  
