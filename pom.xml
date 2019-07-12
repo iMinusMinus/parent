@@ -743,9 +743,13 @@
         <activeByDefault>false</activeByDefault>
         <jdk>1.8</jdk>
         <property>
-          <name>compiler.compliance.level</name>
+          <name>maven.compiler.source</name>
           <value>1.8</value>
         </property>
+        <property>
+          <name>maven.compiler.target</name>
+          <value>1.8</value>
+        </property>  
       </activation>
       <properties>
         <slf4j.version></slf4j.version>
@@ -795,9 +799,13 @@
         <activeByDefault>false</activeByDefault>
         <jdk>11</jdk>
         <property>
-          <name>compiler.compliance.level</name>
+          <name>maven.compiler.source</name>
           <value>11</value>
         </property>
+        <property>
+          <name>maven.compiler.target</name>
+          <value>11</value>
+        </property>  
       </activation>
       <properties>
         <slf4j.version></slf4j.version>
