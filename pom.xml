@@ -231,7 +231,7 @@
       <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>dubbo</artifactId>
-        <version>2.5.3</version>
+        <version>${dubbo.version}</version>
       </dependency>
       <dependency>
         <groupId>org.javassist</groupId>
@@ -731,7 +731,7 @@
       <archive>http://archive.iamwhatiam.ml</archive>
     </mailingList>
   </mailingLists>
-  <scm child.project.url.inherit.append.path="false">
+  <scm><!-- scm child.inherit.append.path="false" -->
     <connection>scm:git:https://github.com/iMinusMinus/parent</connection>
     <tag>HEAD</tag>
   </scm>
@@ -760,6 +760,7 @@
         <mybatis-spring.version></mybatis-spring.version>
         <hibernate.version></hibernate.version>
         <cxf.version></cxf.version>
+        <dubbo.version>2.5.3</dubbo.version>
         <hibernate.validator.version></hibernate.validator.version>
         <javassist.version></javassist.version>
         <spring-security.version></spring-security.version>
@@ -816,6 +817,7 @@
         <mybatis-spring.version></mybatis-spring.version>
         <hibernate.version></hibernate.version>
         <cxf.version></cxf.version>
+        <dubbo.version></dubbo.version>
         <hibernate.validator.version></hibernate.validator.version>
         <javassist.version></javassist.version>
         <spring-security.version></spring-security.version>
